@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.winter.util.Utils;
 
 import lombok.AllArgsConstructor;
@@ -39,6 +40,7 @@ public class Product {
 	private String thumnail;
 	private String day;
 	
+	@JsonIgnoreProperties({"products"})
 	@ManyToOne
 	@JoinColumn(name = "keywordId")
 	private SearchKeyword keyword;
