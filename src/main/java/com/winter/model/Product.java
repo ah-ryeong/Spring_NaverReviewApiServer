@@ -1,6 +1,7 @@
 package com.winter.model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -40,8 +42,10 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "keywordId")
 	private SearchKeyword keyword;
-
 	
+	@OneToMany(mappedBy = "keyword", orphanRemoval = true)
+	private List<Product> products;
+
 	@CreationTimestamp
 	private Timestamp createDate;
 	
