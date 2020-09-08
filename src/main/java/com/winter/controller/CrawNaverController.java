@@ -28,6 +28,23 @@ public class CrawNaverController {
 	@Autowired
 	private SearchKeywordRepository searchKeywordRepository;
 	
+	@GetMapping("/searchKeyword")
+	public @ResponseBody List<SearchKeyword> searchKeyword(){
+		System.out.println("searchKeyword 호출됨");
+		return searchKeywordRepository.findAll();
+	}
+
+	@GetMapping("/product")
+	public @ResponseBody List<Product> product(){
+		int keywordId = searchKeywordRepository.findAll().get(0).getId();
+		return productRepository.findByKeywordId(keywordId);
+	}
+
+	@GetMapping("/product/{keywordId}")
+	public @ResponseBody List<Product> productKeyword(@PathVariable int keywordId){
+		return productRepository.findByKeywordId(keywordId);
+	}
+	
 	@GetMapping("/craw/naver")
 	public String crawNaver(Model model) {
 		model.addAttribute("keywords", searchKeywordRepository.findAll());

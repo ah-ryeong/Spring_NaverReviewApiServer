@@ -9,6 +9,6 @@ import com.winter.model.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
 
-	void saveAll(List<com.winter.model.Product> products);
+	List<Product> findByKeywordId(int keywordId);
 
 }
