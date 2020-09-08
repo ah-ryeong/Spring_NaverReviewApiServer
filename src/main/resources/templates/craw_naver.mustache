@@ -2,23 +2,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 <h1>네이버 크롤링 하기</h1>
-<hr />
-
+<hr/>
 <form id="frm">
 	<input type="text" name="keyword" placeholder="제품명" />
 </form>
-<button onclick="crawNaver()">크롤링 시작</button>
-
+<button onclick="crawNaver()">크롤링시작</button>
 <script>
-	function crawNaver() {
-		let form_el = document.querySelector("#frm");
-		console.log(form_el);
+	function crawNaver(){
+		let data = $("#frm").serialize();
+		console.log(data);
+		 
+		fetch("/craw/naver/proc",{
+			method: "post",
+			body: data,
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+			}
+		}, 120000).then(function(resp){
+			return resp.text();
+		}).then(function(resp){
+			console.log("error", resp);
+			alert(resp);
+		});
 		
-		var data ="keyword=아이패드";
 	}
 </script>
 </body>
