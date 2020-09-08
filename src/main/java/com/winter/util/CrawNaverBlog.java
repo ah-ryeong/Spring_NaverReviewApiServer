@@ -22,7 +22,7 @@ public class CrawNaverBlog {
 		List<Product> products = new ArrayList<>();
 		
 		while (products.size() < 1001) {
-			String url = "https://search.naver.com/search.naver?date_from=&date_option=0&date_to=&dup_remove=1&nso=&post_blogurl=&post_blogurl_without=&query="+keyword+"&sm=tab_pge&srchby=all&st=sim&where=post&start="+start;
+			String url = "https://search.naver.com/search.naver?&date_option=0&date_to=&dup_remove=1&nso=&query="+keyword+"&sm=tab_pge&srchby=all&st=sim&where=post&start="+start;
 
 			try {
 				Document doc = Jsoup.connect(url).get();

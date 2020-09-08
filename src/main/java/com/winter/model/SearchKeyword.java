@@ -1,4 +1,4 @@
-package com.winter.review.model;
+package com.winter.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

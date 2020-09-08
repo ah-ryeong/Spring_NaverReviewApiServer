@@ -10,14 +10,15 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.junit.jupiter.api.Test;
 
-import com.winter.review.model.Product;
+import com.winter.model.Product;
+
 
 // http://hare.kr/222065140009
 // https://search.naver.com/search.naver?date_from=&date_option=0&date_to=&dup_remove=1&nso=&post_blogurl=&post_blogurl_without=&query=%EA%B0%A4%EB%9F%AD%EC%8B%9C20&sm=tab_pge&srchby=all&st=sim&where=post&start=41
 // 섬네일, 블로그주소, 제목, 날짜
 public class NaverBlogCrawTest {
 
-	@Test
+	// @Test
 	public void 날짜_파싱() {
 
 		String today = LocalDate.now().toString();
@@ -59,8 +60,8 @@ public class NaverBlogCrawTest {
 
 		List<Product> products = new ArrayList<>();
 		
-		while(products.size() < 1001) {
-			String url = "https://search.naver.com/search.naver?date_from=&date_option=0&date_to=&dup_remove=1&nso=&post_blogurl=&post_blogurl_without=&query=%EA%B0%A4%EB%9F%AD%EC%8B%9C20&sm=tab_pge&srchby=all&st=sim&where=post&start="+start;
+		while(products.size() < 1) {
+			String url = "https://search.naver.com/search.naver?date_from=&date_option=0&date_to=&dup_remove=1&nso=&post_blogurl=&post_blogurl_without=&query=%EB%A7%A5%EB%B6%81%ED%94%84%EB%A1%9C&sm=tab_pge&srchby=all&st=sim&where=post&start="+start;
 
 			try {
 				Document doc = Jsoup.connect(url).get();
@@ -89,10 +90,6 @@ public class NaverBlogCrawTest {
 		for (Product product : products) {
 			System.out.println("===========================");
 			System.out.println("제목 : "+product.getTitle());
-			System.out.println("주소 : "+product.getBlogUrl());
-			System.out.println("섬네일 : "+product.getThumnail());
-			System.out.println("날짜 : "+product.getDay());
-			System.out.println();
 		}
 	}
 }
