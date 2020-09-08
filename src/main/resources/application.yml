@@ -16,7 +16,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create # create, update, none
+      ddl-auto: update # create, update, none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         # 내가 적은 속성값을 그대로 데이터베이스에 넣어준다.

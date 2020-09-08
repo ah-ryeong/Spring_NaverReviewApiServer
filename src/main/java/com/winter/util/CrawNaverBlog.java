@@ -11,6 +11,7 @@ import com.winter.model.Product;
 
 public class CrawNaverBlog {
 	
+	// 스프링 스케쥴!
 	public List<Product> startDayCraw(String keyword) {
 		return null;
 	}
